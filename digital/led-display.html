@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .display-container{
+        width:100px;
+        height: 100px;
+      }
+      .display-row{
+
+      }
+      .display-led{
+        width:20px;
+        height: 20px;
+        float: left;
+        background-color: blue;
+      }
+      .on{
+        background-color: red;
+      }
+      .off{
+        background-color: blue;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="display-container">
+      <div class="display-row">
+        <div class="display-led"></div>
+        <div class="display-led"></div>
+        <div class="display-led"></div>
+        <div class="display-led"></div>
+        <div class="display-led"></div>
+      </div>
+      <div class="display-row">
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+      </div>
+      <div class="display-row">
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+      </div>
+      <div class="display-row">
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+      </div>
+      <div class="display-row">
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+          <div class="display-led"></div>
+      </div>
+
+
+    </div>
+    <script type="text/javascript">
+      function hasClass(element,className){
+        if(element == null || element.classList == null  ) return false;
+
+        for (var i = 0; i < element.classList.length; i++) {
+          if(element.classList[i] === className) return true;
+        }
+
+        return false;
+      }
+
+      function addClass(element,className){
+        if(element == null || hasClass(element,className)) return;
+
+        if(element.classList == null){
+          element.className = className;
+        }else{
+          element.classList.add(className);
+        }
+
+      }
+
+      function removeClass(element,className){
+        if(element == null || element.classList == null ) return;
+        element.classList.remove(className);
+      }
+
+      function toggle(event){
+        var element = event.currentTarget;
+        if(hasClass(element,'on')){
+          removeClass(element,'on');
+          addClass(element,'off');
+        }else{
+          removeClass(element,'off');
+          addClass(element,'on');
+        }
+      }
+      document.querySelectorAll('.display-led').forEach(function(led){
+        led.onclick=toggle;
+      });
+
+    </script>
+
+  </body>
+</html>
